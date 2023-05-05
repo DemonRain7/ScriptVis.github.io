@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>Script_Parsed_Vis</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../node_modules/echarts/dist/echarts.min.js"></script>
+</head>
+
+<body>
+    <div class="commentvis_box" id="cvb1" style="width:400px; height:400px;background-color: aqua;"></div>
+    <script>
+        var chartDom = document.getElementById('cvb1');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            angleAxis: {
+                type: 'category',
+                data: [
+                    'kosmasp31',
+                    'aheaven200525',
+                    'theoledoux6',
+                    'e-jackson19858',
+                    'ravesch-8377029',
+                    'mysteryvoiceman24',
+                    'bomberh-861286'
+                ]
+            },
+            radiusAxis: {},
+            polar: {},
+            series: [
+                {
+                    type: 'bar',
+                    data: [0.054, 0, 0, 0, 0.051, 0, 0.066],
+                    coordinateSystem: 'polar',
+                    name: 'Neg',
+                    stack: 'a',
+                    emphasis: {
+                        focus: 'series'
+                    }
+                },
+                {
+                    type: 'bar',
+                    data: [0.829, 0.537, 0.826, 0.856, 0.828, 0.735, 0.685],
+                    coordinateSystem: 'polar',
+                    name: 'Neu',
+                    stack: 'a',
+                    emphasis: {
+                        focus: 'series'
+                    }
+                },
+                {
+                    type: 'bar',
+                    data: [0.118, 0.463, 0.174, 0.144, 0.121, 0.265, 0.249],
+                    coordinateSystem: 'polar',
+                    name: 'Pos',
+                    stack: 'a',
+                    emphasis: {
+                        focus: 'series'
+                    }
+                }
+            ],
+            legend: {
+                show: true,
+                data: ['Neg', 'Neu', 'Pos']
+            }
+        };
+
+        option && myChart.setOption(option);
+
+    </script>
+
+
+    <div class="commentvis_box" id="cvb2" style="width:400px; height:400px;background-color: aqua;"></div>
+    <script>
+        var chartDom = document.getElementById('cvb2');
+        var myChart = echarts.init(chartDom);
+        var option;
+
+        option = {
+            xAxis: {
+                type: 'category',
+                data: [
+                    'kosmasp31',
+                    'aheaven200525',
+                    'theoledoux6',
+                    'e-jackson19858',
+                    'ravesch-8377029',
+                    'mysteryvoiceman24',
+                    'bomberh-861286'
+                ]
+            },
+            yAxis: {
+                type: 'value',
+                name: 'comprehensive evaluation'
+            },
+            series: [
+                {
+                    data: [0.7876, 0.988, 0.9786, 0.836, 0.8391, 0.9769, 0.9342],
+                    type: 'bar',
+                    showBackground: true,
+                    backgroundStyle: {
+                        color: 'rgba(180, 180, 180, 0.2)'
+                    }
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+
+
+</body>
+
+</html>

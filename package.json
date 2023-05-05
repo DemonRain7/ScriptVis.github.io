@@ -1,0 +1,13 @@
+{
+  "devDependencies": {
+    "naive-ui": "^2.34.3",
+    "vfonts": "^0.0.3"
+  },
+  "dependencies": {
+    "@egjs/flicking": "^4.10.7",
+    "@egjs/infinitegrid": "^4.9.0",
+    "echarts": "^5.4.2",
+    "vue-dnd-zone": "^0.4.0",
+    "vue3-smooth-dnd": "^0.0.5"
+  }
+}
