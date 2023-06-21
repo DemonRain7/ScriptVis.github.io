@@ -1,2 +1,2 @@
-# Script_Vis_FinalVersion
- A system for  ScriptVis
+# Script_Vis
+A web for parsed scripts' visualization demonstration

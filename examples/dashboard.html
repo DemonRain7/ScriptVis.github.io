@@ -475,101 +475,841 @@
                                 </div>
                                 <script>
                                     var chartDom = document.getElementById('b1');
-                                    var myChart = echarts.init(chartDom,'dark');
+                                    var myChart = echarts.init(chartDom, 'dark');
                                     var option;
+
                                     myChart.showLoading();
-                                    $.getJSON('http://raw.githubusercontent.com/wamx-lgtm/Data_visible/main/Les_miserables.json', function (graph) {
-                                        myChart.hideLoading();
-                                        graph.nodes.forEach(function (node) {
-                                            node.label = {
-                                                show: node.symbolSize > 30
-                                            };
-                                        });
-                                        option = {
-                                            title: {
-                                                text: '',
-                                                subtext: '',
-                                                top: 'bottom',
-                                                left: 'right'
+
+                                    // 假设你已经准备好了一个名为 data 的数组作为模板
+                                    var data = {
+                                        nodes: [
+                                            {
+                                                "id": "0",
+                                                "name": "ANSEN",
+                                                "symbolSize": 8,
+                                                "x": 436.8000183105469,
+                                                "y": 55.400020599365234,
+                                                "value": 8,
+                                                "category": 0
                                             },
-                                            tooltip: {
-                                                formatter: function (params) {
+                                            {
+                                                "id": "1",
+                                                "name": "ASSITANT",
+                                                "symbolSize": 4,
+                                                "x": 445.6000061035156,
+                                                "y": 85,
+                                                "value": 4,
+                                                "category": 0
+                                            },
+                                            {
+                                                "id": "2",
+                                                "name": "COOPER",
+                                                "symbolSize": 100,
+                                                "x": 200,
+                                                "y": 100,
+                                                "value": 1174,
+                                                "category": 7
+                                            },
+                                            {
+                                                "id": "3",
+                                                "name": "NSA AGENT",
+                                                "symbolSize": 3,
+                                                "x": -24,
+                                                "y": 203,
+                                                "value": 3,
+                                                "category": 0
+                                            },
+                                            {
+                                                "id": "4",
+                                                "name": "TOM",
+                                                "symbolSize": 30,
+                                                "x": -307,
+                                                "y": 42,
+                                                "value": 72,
+                                                "category": 3
+                                            },
+                                            {
+                                                "id": "5",
+                                                "name": "MURPH",
+                                                "symbolSize": 45,
+                                                "x": 30,
+                                                "y": -30,
+                                                "value": 224,
+                                                "category": 4
+                                            },
+                                            {
+                                                "id": "6",
+                                                "name": "DONALD",
+                                                "symbolSize": 30,
+                                                "x": -33,
+                                                "y": 48,
+                                                "value": 70,
+                                                "category": 3
+                                            },
+                                            {
+                                                "id": "7",
+                                                "name": "GOVERNMENT MAN",
+                                                "symbolSize": 7,
+                                                "x": -380,
+                                                "y": 47,
+                                                "value": 7,
+                                                "category": 0
+                                            },
+                                            {
+                                                "id": "8",
+                                                "name": "BALLPLAYER",
+                                                "symbolSize": 8,
+                                                "x": -32,
+                                                "y": 308,
+                                                "value": 8,
+                                                "category": 0
+                                            },
+                                            {
+                                                "id": "9",
+                                                "name": "CB OPERATOR",
+                                                "symbolSize": 9,
+                                                "x": -352,
+                                                "y": 38,
+                                                "value": 9,
+                                                "category": 0
+                                            },
+                                            {
+                                                "id": "10",
+                                                "name": "OldMan",
+                                                "symbolSize": 13,
+                                                "x": -344,
+                                                "y": 45,
+                                                "value": 13,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "11",
+                                                "name": "MS. KELLY",
+                                                "symbolSize": 10,
+                                                "x": -87.93029,
+                                                "y": -68.8120565,
+                                                "value": 10,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "12",
+                                                "name": "PRINCIPAL",
+                                                "symbolSize": 12,
+                                                "x": -3,
+                                                "y": -18,
+                                                "value": 12,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "13",
+                                                "name": "RIGGS",
+                                                "symbolSize": 20,
+                                                "x": -19,
+                                                "y": 178,
+                                                "value": 24,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "14",
+                                                "name": "OLD ENGINEER",
+                                                "symbolSize": 15,
+                                                "x": -158,
+                                                "y": 201,
+                                                "value": 15,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "15",
+                                                "name": "DOYLE",
+                                                "symbolSize": 50,
+                                                "x": -127,
+                                                "y": 242,
+                                                "value": 422,
+                                                "category": 5
+                                            },
+                                            {
+                                                "id": "16",
+                                                "name": "BRAND'S FATHER",
+                                                "symbolSize": 30,
+                                                "x": -300,
+                                                "y": -39,
+                                                "value": 84,
+                                                "category": 3
+                                            },
+                                            {
+                                                "id": "17",
+                                                "name": "TARS",
+                                                "symbolSize": 35,
+                                                "x": -510,
+                                                "y": -39,
+                                                "value": 199,
+                                                "category": 3
+                                            },
+                                            {
+                                                "id": "18",
+                                                "name": "BRAND",
+                                                "symbolSize": 70,
+                                                "x": -46,
+                                                "y": -490,
+                                                "value": 877,
+                                                "category": 6
+                                            },
+                                            {
+                                                "id": "19",
+                                                "name": "CASE",
+                                                "symbolSize": 35,
+                                                "x": -51.1624,
+                                                "y": -56.9891,
+                                                "value": 263,
+                                                "category": 4
+                                            },
+                                            {
+                                                "id": "20",
+                                                "name": "ROTH",
+                                                "symbolSize": 45,
+                                                "x": 48.12122,
+                                                "y": -44.5048,
+                                                "value": 395,
+                                                "category": 4
+                                            },
+                                            {
+                                                "id": "21",
+                                                "name": "CHINESE OFFICER",
+                                                "symbolSize": 22,
+                                                "x": 356.44113,
+                                                "y": -42.13303,
+                                                "value": 22,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "22",
+                                                "name": "LIU",
+                                                "symbolSize": 26,
+                                                "x": -9.1107,
+                                                "y": -32.5133,
+                                                "value": 46,
+                                                "category": 2
+                                            },
+                                            {
+                                                "id": "23",
+                                                "name": "FARMER",
+                                                "symbolSize": 24,
+                                                "x": -31.42786,
+                                                "y": -9.44803,
+                                                "value": 24,
+                                                "category": 1
+                                            },
+                                            {
+                                                "id": "24",
+                                                "name": "EMILY COOPER",
+                                                "symbolSize": 27.5,
+                                                "x": 4.6313396,
+                                                "y": -273.8517,
+                                                "value": 54,
+                                                "category": 2
+                                            },
+                                            {
+                                                "id": "25",
+                                                "name": "MURPH'S WIFE",
+                                                "symbolSize": 24,
+                                                "x": 82.80825,
+                                                "y": -20.1144,
+                                                "value": 27,
+                                                "category": 2
+                                            },
+                                            {
+                                                "id": "26",
+                                                "name": "WIFE",
+                                                "symbolSize": 24,
+                                                "x": 78.64646,
+                                                "y": -31.512747,
+                                                "value": 27,
+                                                "category": 2
+                                            },
+                                            {
+                                                "id": "27",
+                                                "name": "ADMINISTRATOR",
+                                                "symbolSize": 24,
+                                                "x": -81.46074,
+                                                "y": -20.20204,
+                                                "value": 28,
+                                                "category": 2
+                                            },
+                                            {
+                                                "id": "28",
+                                                "name": "DOCTOR",
+                                                "symbolSize": 24,
+                                                "x": -25.73984,
+                                                "y": 82.41631,
+                                                "value": 28,
+                                                "category": 2
+                                            }
+                                        ],
+                                        links: [
+                                            {
+                                                "source": "0",
+                                                "target": "1"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "2"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "3"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "4"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "5"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "6"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "7"
+                                            },
+                                            {
+                                                "source": "0",
+                                                "target": "8"
+                                            },
+                                            {
+                                                "source": "1",
+                                                "target": "2"
+                                            },
+                                            {
+                                                "source": "1",
+                                                "target": "3"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "3"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "4"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "5"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "6"
+                                            },
+                                            {
+                                                "source": "",
+                                                "target": ""
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "7"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "8"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "9"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "10"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "11"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "12"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "13"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "14"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "15"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "16"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "17"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "23"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "24"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "25"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "26"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "27"
+                                            },
+                                            {
+                                                "source": "2",
+                                                "target": "28"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "5"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "6"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "7"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "8"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "9"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "10"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "11"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "12"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "13"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "14"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "15"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "16"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "17"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "4",
+                                                "target": "23"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "6"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "7"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "8"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "9"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "10"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "11"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "12"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "13"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "14"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "15"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "16"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "17"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "23"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "24"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "25"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "26"
+                                            },
+                                            {
+                                                "source": "5",
+                                                "target": "27"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "7"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "8"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "9"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "10"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "11"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "12"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "13"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "14"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "15"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "16"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "17"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "6",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "17"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "16",
+                                                "target": "23"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "18"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "17",
+                                                "target": "23"
+                                            },
+                                            {
+                                                "source": "18",
+                                                "target": "19"
+                                            },
+                                            {
+                                                "source": "18",
+                                                "target": "20"
+                                            },
+                                            {
+                                                "source": "18",
+                                                "target": "21"
+                                            },
+                                            {
+                                                "source": "18",
+                                                "target": "22"
+                                            },
+                                            {
+                                                "source": "18",
+                                                "target": "23"
+                                            }
+                                        ],
+                                        categories: [
+                                            {
+                                                "name": "0-9"
+                                            },
+                                            {
+                                                "name": "10-25"
+                                            },
+                                            {
+                                                "name": "26-69"
+                                            },
+                                            {
+                                                "name": "70-199"
+                                            },
+                                            {
+                                                "name": "200-399"
+                                            },
+                                            {
+                                                "name": "400-799"
+                                            },
+                                            {
+                                                "name": "800-999"
+                                            },
+                                            {
+                                                "name": ">999"
+                                            }
+                                        ]
+                                    };
+
+                                    myChart.hideLoading();
+                                    data.nodes.forEach(function (node) {
+                                        node.label = {
+                                            show: node.symbolSize > 30
+                                        };
+                                    });
+
+                                    option = {
+                                        title: {
+                                            text: '',
+                                            subtext: '',
+                                            top: 'bottom',
+                                            left: 'right'
+                                        },
+                                        tooltip: {
+                                                formatter: function(params) {
                                                     var node = params.data;
                                                     if (node.id === '2') {
-                                                        return '<img src="../images/cooper.jpg" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/cooper.jpg" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '5') {
-                                                        return '<img src="../images/murph.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/murph.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '18') {
-                                                        return '<img src="../images/brand.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/brand.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '17') {
-                                                        return '<img src="../images/tars.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/tars.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '15') {
-                                                        return '<img src="../images/doyle.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/doyle.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '19') {
-                                                        return '<img src="../images/case.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/case.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (node.id === '20') {
-                                                        return '<img src="../images/roth.png" style="width: 100px; height: 100px;">' + ' ' + node.value;
+                                                        return '<img src="../images/roth.png" style="width: 100px; height: 100px;">'+ ' ' + node.value;
                                                     }
                                                     else if (params.dataType === 'node')
                                                     {
                                                         return node.name + ' ' + node.value;
                                                     }
+
                                                 },
                                             },
-                                            legend: [
-                                                {
-                                                    data: graph.categories.map(function (a) {
-                                                        return a.name;
-                                                    })
-                                                }
-                                            ],
-                                            animationDurationUpdate: 1500,
-                                            animationEasingUpdate: 'quinticInOut',
-                                            series: [
-                                                {
-                                                    name: 'Interstellar',
-                                                    type: 'graph',
-                                                    layout: 'circular',
-                                                    circular: {
-                                                        rotateLabel: true
-                                                    },
-                                                    data: graph.nodes,
-                                                    links: graph.links,
-                                                    categories: graph.categories,
-                                                    roam: true,
-                                                    label: {
-                                                        position: 'right',
-                                                        formatter: '{b}'
-                                                    },
+                                        legend: [
+                                            {
+                                                data: data.categories.map(function (a) {
+                                                    return a.name;
+                                                })
+                                            }
+                                        ],
+                                        animationDurationUpdate: 1500,
+                                        animationEasingUpdate: 'quinticInOut',
+                                        series: [
+                                            {
+                                                name: 'Interstellar',
+                                                type: 'graph',
+                                                layout: 'circular',
+                                                circular: {
+                                                    rotateLabel: true
+                                                },
+                                                data: data.nodes,
+                                                links: data.links,
+                                                categories: data.categories,
+                                                roam: true,
+                                                label: {
+                                                    position: 'right',
+                                                    formatter: '{b}'
+                                                },
+                                                lineStyle: {
+                                                    color: 'source',
+                                                    curveness: 0.3
+                                                },
+                                                emphasis: {
+                                                    focus: 'adjacency',
                                                     lineStyle: {
-                                                        color: 'source',
-                                                        curveness: 0.3
-                                                    },
-                                                    emphasis: {
-                                                        focus: 'adjacency',
-                                                        lineStyle: {
-                                                            width: 10
-                                                        }
-                                                    },
-                                                    data: graph.nodes.map(function (node) {
-                                                        return {
-                                                            ...node,
-                                                            id: node.id
-                                                        }
-                                                    })
-                                                }
-                                            ]
-                                        };
-                                        myChart.setOption(option);
-                                    });
+                                                        width: 10
+                                                    }
+                                                },
+                                                data: data.nodes.map(function (node) {
+                                                    return {
+                                                        ...node,
+                                                        id: node.id
+                                                    };
+                                                })
+                                            }
+                                        ]
+                                    };
 
-                                    option && myChart.setOption(option);
+                                    myChart.setOption(option);
                                 </script>
                                 <!--人物关系与时间轴的交互-->
                                 <script>
